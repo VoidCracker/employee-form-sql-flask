@@ -1,0 +1,93 @@
+Quick Setup Guide for Flask + SQL Server Employee Form
+1. Install Python (3.7+)
+Download and install from python.org.
+
+Add Python to your system PATH.
+
+2. Install Microsoft ODBC Driver 17 for SQL Server
+Download from: https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server
+
+Install the driver matching your OS and architecture.
+
+3. Install Microsoft SQL Server and Management Studio
+Install SQL Server Developer Edition: https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+
+Install SQL Server Management Studio (SSMS): https://aka.ms/ssms
+
+4. Set Up Your Database
+Open SSMS and connect to your server (e.g., localhost).
+
+Create a database named saste_iitian.
+
+Create a table students with columns:
+
+sql
+Copy
+Edit
+CREATE TABLE students (
+    EMPLOYEEID INT PRIMARY KEY,
+    FULLNAME NVARCHAR(100),
+    ROLE NVARCHAR(50),
+    EMAIL NVARCHAR(100),
+    PHONENUMBER NVARCHAR(10),
+    JOINDATE DATE,
+    WORKING BIT,
+    SALARY DECIMAL(10, 2)
+);
+Enable TCP/IP in SQL Server Configuration Manager if needed.
+
+5. Clone Your Project
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/your-repo.git
+cd your-repo
+6. Install Python Dependencies
+bash
+Copy
+Edit
+pip install flask pyodbc
+7. Configure Database Connection
+Edit app.py or your config file.
+
+Example connection string for local trusted connection:
+
+python
+Copy
+Edit
+conn_str = (
+    "Driver={ODBC Driver 17 for SQL Server};"
+    "Server=localhost;"
+    "Database=saste_iitian;"
+    "Trusted_Connection=yes;"
+)
+For SQL login, replace with:
+
+python
+Copy
+Edit
+conn_str = (
+    "Driver={ODBC Driver 17 for SQL Server};"
+    "Server=YOUR_SERVER_NAME;"
+    "Database=saste_iitian;"
+    "UID=YOUR_USERNAME;"
+    "PWD=YOUR_PASSWORD;"
+)
+8. Run the Flask App
+bash
+Copy
+Edit
+python app.py
+Open browser at http://127.0.0.1:5000 to access the form.
+
+9. Optional: Deploy Online
+Push to GitHub.
+
+Deploy on Render.com or other hosting.
+
+Set environment variables for DB credentials.
+
+Use start command python app.py.
+
+Done! Your form should be accessible locally or online and save data to your SQL Server database.
+
